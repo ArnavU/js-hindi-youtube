@@ -18,22 +18,29 @@ const myArr2 = new Array(1, 2, 3, 4)
 // console.log(myArr.includes(9));
 // console.log(myArr.indexOf(3));
 
-// const newArr = myArr.join()
+// const newArr = myArr.join() --> converts array into string
 
 // console.log(myArr);
 // console.log( newArr);
-
 
 // slice, splice
 
 console.log("A ", myArr);
 
-const myn1 = myArr.slice(1, 3)
+const myn1 = myArr.slice(1, 3) // arr.slice(indx, index);
 
 console.log(myn1);
 console.log("B ", myArr);
 
 
-const myn2 = myArr.splice(1, 3)
+// const myn2 = myArr.splice(1, 3, 99, 100)
+const myn2 = myArr.splice(1, 3) // arr.splice(index, how_many)
 console.log("C ", myArr);
 console.log(myn2);
+
+let arr1 = [1, 2, 3, 4];
+let arr2 = [5, 6, 7];
+
+let arr3 = arr1.concat(arr2)
+console.log(arr3);
+

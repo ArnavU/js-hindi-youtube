@@ -1,0 +1,54 @@
+# The concept of shallow copy and deep copy in arrays in JS
+
+----------------------- the spread operator -----------------------
+// I call it partial shallow copy
+
+let arr1 = [1, 2, 3, [4, 5]];
+let arr2 = arr1; --> this is a shallow copy || both are refering the same 
+
+// shallow copy using spread operator "...arr"
+let arr1 = [1, 2, 3, [4, 5]];
+let arr2 = [...arr1];
+
+arr2[0] = 100; 
+console.log(arr1[0]); => 1 || no change in arr1
+
+arr2[3][0] = 99;
+console.log(arr1[3][0]); => 99 || change reflected in nested structure
+
+Note ---> If the original object or array contains nested objects or arrays, changes made to the nested structures will be reflected in both the original and copied objects or arrays. If you need a completely independent copy (deep copy), additional steps or libraries may be required.
+
+// ----------------- deep copy -- "lodash" package -----------------
+// use lodash's cloneDeep() 
+
+let _ = require("lodash");
+let arr1 = [1, 2, 3, [4, 5]];
+let arr2 = _.cloneDeep(arr1);
+
+arr2[3][0] = 99;
+console.log(arr1[3][0]); => 4 || no change in nested structure
+
+
+// --------------------- use of spread operator ---------------------
+// 1. Array Concatenation:
+const mergedArray = [...array1, ...array2];
+
+// 2. Array Copying:
+const originalArray = [1, 2, 3];
+const shallowCopy = [...originalArray];
+
+// 3. Object Merging:
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+const mergedObject = { ...obj1, ...obj2 };
+
+// 4. Function Parameters:
+function exampleFunction(...args) {
+  console.log(args);
+}
+exampleFunction(1, 2, 3); // Output: [1, 2, 3]
+
+// 5. Copying Arrays and Adding Elements:
+const originalArray = [1, 2, 3];
+const newArray = [...originalArray, 4, 5];
+console.log(newArray); // Output: [1, 2, 3, 4, 5]
