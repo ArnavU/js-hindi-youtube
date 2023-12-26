@@ -21,6 +21,6 @@ for (const key in programming) {
 // map.set('Fr', "France")
 // map.set('IN', "India")
 
-// for (const key in map) {
+// for (const key in map) { // => not possible 
 //     console.log(key);
 // }
