@@ -3,7 +3,7 @@ const promiseOne = new Promise(function(resolve, reject){
     // DB calls, cryptography, network
     setTimeout(function(){
         console.log('Async task is compelete');
-        resolve()
+        resolve(); // => resolve is connected to the .then handler
     }, 1000)
 })
 
@@ -33,7 +33,7 @@ promiseThree.then(function(user){
 
 const promiseFour = new Promise(function(resolve, reject){
     setTimeout(function(){
-        let error = true
+        let error = false;
         if (!error) {
             resolve({username: "hitesh", password: "123"})
         } else {
@@ -42,10 +42,17 @@ const promiseFour = new Promise(function(resolve, reject){
     }, 1000)
 })
 
- promiseFour
- .then((user) => {
-    console.log(user);
-    return user.username
+// never use setTimeout directly in .then() without wrapping it in a promise
+// error handling using .then() and .catch() 
+promiseFour
+.then((user) => {
+    console.log("HI");
+    return new Promise((resolve, reject) => { // necessary
+        setTimeout(() => {
+            console.log(user);
+            resolve(user.username);
+        }, 2000)
+    })
 }).then((username) => {
     console.log(username);
 }).catch(function(error){
@@ -53,7 +60,7 @@ const promiseFour = new Promise(function(resolve, reject){
 }).finally(() => console.log("The promise is either resolved or rejected"))
 
 
-
+// error handling using try and catch inside async/await
 const promiseFive = new Promise(function(resolve, reject){
     setTimeout(function(){
         let error = true
@@ -71,6 +78,9 @@ async function consumePromiseFive(){
         console.log(response);
     } catch (error) {
         console.log(error);
+    }
+    finally {
+        console.log("This is finally block");
     }
 }
 
