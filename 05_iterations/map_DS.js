@@ -2,6 +2,10 @@
 //              ==> order is maintained
 //              ==> iterable
 
+// Map can be iterated using -
+// 1) for...of loop
+// 2) for..in loop -- after using Array.from()
+// 3) forEach() -- after using Array.from()
 
 // Creating an empty map
 const myMap = new Map();
@@ -49,5 +53,30 @@ for(const value of fruitMap.values()) {
 // Size of the Map
 console.log();
 console.log("Size: " + fruitMap.size);
+
+
+// ---------------- Iterating using forEach() and for...in ----------------
+// iterate using forEach()
+console.log("\nIterate using forEach()");
+// Array.from(fruitMap.keys()).forEach((key) => {
+//     console.log(key);
+// })
+
+fruitMap.forEach((value, key) => {
+    console.log(key);
+})
+
+// Iterating using for...in
+console.log("\nIterate using for...in");
+let entryArr = Array.from(fruitMap.entries());
+for(let ind in entryArr) {
+    console.log(entryArr[ind]);    
+}
+
+console.log("\nfruitMap.entries()");
+console.log(fruitMap.entries());
+
+console.log("\nArray.from(fruitMap.entries())");
+console.log(Array.from(fruitMap.entries()));
 
 
