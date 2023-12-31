@@ -8,9 +8,10 @@ const User = {
     },
 
     set email(value){
-        this._email = value
+        this._email = value+'abc'
     }
 }
 
 const tea = Object.create(User)
+// tea.email = "t@123"
 console.log(tea.email);

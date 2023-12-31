@@ -8,11 +8,12 @@ class User {
         return this._email.toUpperCase()
     }
     set email(value){
-        this._email = value
+        this._email = value // using _email avoids recursion as "this.email = email; fff f " is calling set()
     }
 
     get password(){
-        return `${this._password}hitesh`
+        // return `${this._password}hitesh`
+        return `You cannot access the password sorry`;
     }
 
     set password(value){
@@ -21,4 +22,4 @@ class User {
 }
 
 const hitesh = new User("h@hitesh.ai", "abc")
-console.log(hitesh.email);
+console.log(hitesh.password);

@@ -1,0 +1,35 @@
+## Lexical scope
+    - The lexical scope of a function refers to the set of variables that the function has access to at the time of its definition.
+    - In JavaScript, when a function is defined inside another function, it forms a lexical scope, and the inner function has access to the variables of its outer (enclosing) scope.
+
+# Example of Lexical scope
+function outerFunction() {
+  const outerVariable = 'I am from outer';
+
+  function innerFunction() {
+    console.log(outerVariable); // Accessing outerVariable from the outer scope
+  }
+
+  innerFunction();
+}
+
+outerFunction();
+
+## Closure
+    - A closure in JavaScript is a combination of a function and the lexical environment within which that function was declared. 
+    - In simpler terms, a closure allows a function to retain access to variables from its outer (enclosing) scope even after the outer function has finished execution. 
+    - This is possible because the inner function maintains a reference to the outer function's variables.
+
+# Closure Example
+function outerFunction() {
+  let outerVariable = 'I am from outer';
+
+  function innerFunction() {
+    console.log(outerVariable); // Accessing outerVariable from the outer scope
+  }
+
+  return innerFunction;
+}
+
+const closureExample = outerFunction();
+closureExample(); // Outputs: I am from outer

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard</title>
+    <style>
+        body {
+            background-color: gray;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 30%;
+            border: 2px solid black;
+        }
+
+        th,
+        td {
+            border: 2px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #acab46;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="tble"></div>
+
+    <script>
+        window.addEventListener('keydown', (e)=> {
+            let html = `
+            <table>
+                <thead>
+                    <th>Key</th>
+                    <th>Keycode</th>
+                    <th>code</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${e.key}</td>
+                        <td>${e.keyCode}</td>
+                        <td>${e.code}</td>
+                    </tr>
+                </tbody>
+            </table>
+            `
+
+            let tble = document.getElementById('tble');
+            tble.innerHTML = html;
+
+        })
+    </script>
+
+</body>
+
+</html>
